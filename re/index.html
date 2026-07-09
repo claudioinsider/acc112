@@ -1,0 +1,1187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script type="text/javascript" src="https://tapz.fastportaria.lat/track.js?rtkcmpid=6a4e7a891b6abd4a7c71c25c"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ============ PRIMARY META ============ -->
+    <title>Lottery Number Statistics — A Special Editorial Report (18+)</title>
+    <meta
+      name="description"
+      content="An educational editorial report on lottery number statistics, frequency analysis, and how U.S. lottery players organize and track their plays. Educational content only — no method changes the odds or guarantees a win. 18+."
+    />
+    <meta name="author" content="Editorial Lottery Brief" />
+    <meta name="publisher" content="Editorial Lottery Brief" />
+    <meta name="rating" content="adult" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#b91c1c" />
+    <meta name="color-scheme" content="light" />
+    <meta name="language" content="en" />
+
+    <!-- ============ FAVICON ============ -->
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="shortcut icon" href="favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="favicon-16x16.png" />
+
+    <!-- ============ OPEN GRAPH / SOCIAL ============ -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Editorial Lottery Brief" />
+    <meta
+      property="og:title"
+      content="Lottery Number Statistics — A Special Editorial Report"
+    />
+    <meta
+      property="og:description"
+      content="Educational editorial report on lottery number statistics and how players organize and track their plays. No method changes the odds or guarantees a win. 18+."
+    />
+    <meta property="og:image" content="ff29bd6a6317d388c26b9b37abf8efba.jpg" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Lottery Number Statistics — A Special Editorial Report"
+    />
+    <meta
+      name="twitter:description"
+      content="Educational editorial report on lottery number statistics. No method changes the odds or guarantees a win. 18+."
+    />
+    <meta name="twitter:image" content="ff29bd6a6317d388c26b9b37abf8efba.jpg" />
+    <style>
+      /* ============ RESET ============ */
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      button {
+        font: inherit;
+        cursor: pointer;
+        border: none;
+        background: none;
+      }
+      a {
+        color: inherit;
+      }
+
+      /* ============ TOKENS ============ */
+      :root {
+        --red: #b91c1c;
+        --red-dark: #991b1b;
+        --red-cta-1: #c62828;
+        --orange-cta-2: #e67e22;
+        --orange: #c2712a;
+        --kicker: #b45309;
+        --cream: #faf6ee;
+        --cream-soft: #fdf9f1;
+        --pink-bg: #fdf1ef;
+        --pink-border: #f5d5d0;
+        --orange-note-bg: #fff7ed;
+        --orange-note-border: #f3c78e;
+        --gray-bg: #f2f3f5;
+        --ink: #1a1a1a;
+        --body: #37352f;
+        --muted: #6b6b6b;
+        --hairline: #e5e2da;
+        --green-badge-bg: #d9f2e3;
+        --green-badge-text: #1d7a4f;
+      }
+
+      body {
+        font-family:
+          "Segoe UI",
+          -apple-system,
+          BlinkMacSystemFont,
+          Roboto,
+          Arial,
+          sans-serif;
+        color: var(--body);
+        background: #fff;
+        line-height: 1.6;
+        font-size: 17px;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .container {
+        max-width: 780px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .container--narrow {
+        max-width: 720px;
+      }
+
+      /* ============ KICKER / EYEBROW ============ */
+      .kicker {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--kicker);
+        margin-bottom: 14px;
+      }
+      .eyebrow {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--red);
+        text-align: center;
+      }
+
+      /* ============ CTA ============ */
+      .cta {
+        display: block;
+        width: 100%;
+        max-width: 480px;
+        margin: 0 auto;
+        padding: 20px 30px;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        font-weight: 700;
+        font-size: 21px;
+        border-radius: 8px;
+        background: linear-gradient(
+          90deg,
+          var(--red-cta-1) 0%,
+          var(--orange-cta-2) 100%
+        );
+        box-shadow: 0 8px 18px rgba(198, 40, 40, 0.28);
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease,
+          filter 0.15s ease;
+      }
+      .cta:hover {
+        transform: translateY(-2px);
+        filter: brightness(1.05);
+        box-shadow: 0 12px 24px rgba(198, 40, 40, 0.34);
+      }
+      .cta:active {
+        transform: translateY(0);
+      }
+      .cta-wrap {
+        margin: 42px 0 10px;
+      }
+
+      /* ============ SECTIONS ============ */
+      .section {
+        padding: 72px 0;
+      }
+      .bg-cream {
+        background: var(--cream);
+      }
+      .bg-white {
+        background: #fff;
+      }
+      .bg-gray {
+        background: var(--gray-bg);
+      }
+
+      .section h2 {
+        font-size: clamp(28px, 4.5vw, 36px);
+        line-height: 1.2;
+        font-weight: 800;
+        color: var(--ink);
+        margin-bottom: 22px;
+        letter-spacing: -0.01em;
+      }
+      .section p {
+        margin-bottom: 18px;
+      }
+
+      /* ============ COMPLIANCE TOP BAR ============ */
+      .topbar {
+        background: #1a1a1a;
+        color: #f2f2f2;
+        font-size: 12.5px;
+        line-height: 1.5;
+        text-align: center;
+        padding: 9px 18px;
+        letter-spacing: 0.01em;
+      }
+      .topbar a {
+        color: #fca5a5;
+        font-weight: 700;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        white-space: nowrap;
+      }
+      .topbar-badge {
+        display: inline-block;
+        background: #dc2626;
+        color: #fff;
+        font-weight: 800;
+        font-size: 11px;
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin-right: 8px;
+        vertical-align: middle;
+      }
+
+      /* ============ HERO ============ */
+      .hero {
+        background: var(--cream);
+        padding: 44px 0 56px;
+      }
+      .hero .container {
+        max-width: 860px;
+      }
+      .hero h1 {
+        font-size: clamp(30px, 5.4vw, 44px);
+        line-height: 1.18;
+        font-weight: 800;
+        color: var(--red);
+        text-align: center;
+        margin: 18px auto 30px;
+        max-width: 720px;
+        letter-spacing: -0.01em;
+      }
+      .video-frame {
+        position: relative;
+        max-width: 660px;
+        margin: 0 auto 30px;
+        aspect-ratio: 640 / 480;
+        background: radial-gradient(
+          ellipse at 50% 45%,
+          #b98a3f 0%,
+          #8a5f28 35%,
+          #5c3d18 65%,
+          #3a2610 100%
+        );
+        border-radius: 4px;
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+      }
+      .video-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .play-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 74px;
+        height: 50px;
+        background: #e62117;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+        transition:
+          transform 0.15s ease,
+          background 0.15s ease;
+      }
+      .video-frame:hover .play-btn {
+        transform: translate(-50%, -50%) scale(1.08);
+        background: #f21c11;
+      }
+      .play-btn::after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 11px 0 11px 19px;
+        border-color: transparent transparent transparent #fff;
+        margin-left: 4px;
+      }
+      .hero-meta {
+        text-align: center;
+        font-style: italic;
+        color: var(--muted);
+        font-size: 15px;
+        margin-top: 18px;
+      }
+
+      /* ============ DASH LIST (Part I) ============ */
+      .dash-list {
+        list-style: none;
+        margin: 26px 0;
+      }
+      .dash-list li {
+        display: flex;
+        gap: 16px;
+        padding: 14px 4px;
+        border-bottom: 1px solid var(--hairline);
+      }
+      .dash-list li:first-child {
+        border-top: 1px solid var(--hairline);
+      }
+      .dash-list li::before {
+        content: "—";
+        color: var(--red);
+        font-weight: 700;
+        flex: 0 0 auto;
+      }
+
+      .link-red {
+        color: var(--red);
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      /* ============ CALLOUT (left orange bar) ============ */
+      .callout {
+        background: var(--cream-soft);
+        border-left: 5px solid var(--orange);
+        padding: 22px 26px;
+        margin: 30px 0;
+      }
+      .bg-cream .callout,
+      .bg-gray .callout {
+        background: #fdf8ee;
+      }
+      .callout-label {
+        font-size: 11.5px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--kicker);
+        margin-bottom: 10px;
+      }
+      .callout p {
+        margin: 0;
+      }
+
+      /* ============ EDITOR'S NOTE BOX ============ */
+      .note-box {
+        background: var(--orange-note-bg);
+        border: 1px solid var(--orange-note-border);
+        border-radius: 8px;
+        padding: 22px 26px;
+        margin: 30px 0;
+      }
+      .note-box .callout-label {
+        color: var(--kicker);
+      }
+      .note-box p {
+        margin: 0;
+      }
+
+      /* ============ MYTH / FACT CARDS ============ */
+      .mf-card {
+        background: var(--pink-bg);
+        border: 1px solid var(--pink-border);
+        border-radius: 10px;
+        padding: 26px 30px;
+        margin-bottom: 26px;
+      }
+      .badge {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        border-radius: 4px;
+        margin-bottom: 12px;
+      }
+      .badge--myth {
+        background: #dc2626;
+        color: #fff;
+      }
+      .badge--fact {
+        background: var(--green-badge-bg);
+        color: var(--green-badge-text);
+      }
+      .mf-card .myth-quote {
+        font-weight: 600;
+        color: var(--ink);
+        margin-bottom: 18px;
+      }
+      .mf-card p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* ============ CHIPS ============ */
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 26px 0;
+      }
+      .chip {
+        background: #fbfbfa;
+        border: 1px solid #dddad2;
+        border-radius: 999px;
+        padding: 8px 18px;
+        font-size: 14.5px;
+        color: var(--body);
+        white-space: nowrap;
+      }
+
+      /* ============ LETTER CARDS (Part IV) ============ */
+      .letter-card {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+        padding: 26px 30px;
+        margin-bottom: 24px;
+      }
+      .letter-card blockquote {
+        border-left: 3px solid var(--red);
+        padding-left: 18px;
+        font-style: italic;
+        color: var(--body);
+        margin-bottom: 16px;
+      }
+      .letter-card cite {
+        display: block;
+        font-style: normal;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      /* ============ FAQ ============ */
+      .faq {
+        margin-top: 10px;
+      }
+      .faq-item {
+        border-bottom: 1px solid var(--hairline);
+      }
+      .faq-item:first-child {
+        border-top: none;
+      }
+      .faq-q {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        text-align: left;
+        padding: 22px 4px;
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .faq-item.is-highlight .faq-q {
+        color: var(--red);
+      }
+      .faq-icon {
+        flex: 0 0 auto;
+        color: #e02424;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 1;
+        transition: transform 0.2s ease;
+      }
+      .faq-a {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+      .faq-a-inner {
+        padding: 0 4px 24px;
+        color: #4a4a44;
+      }
+      .faq-a-inner p {
+        margin-bottom: 12px;
+      }
+      .faq-a-inner p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* ============ GUIDELINES CARD ============ */
+      .guide-card {
+        background: #f7f7f8;
+        border: 1px solid #e3e3e6;
+        border-radius: 8px;
+        padding: 30px 34px;
+      }
+      .guide-card h3 {
+        font-size: 16.5px;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 8px;
+      }
+      .guide-card .guide-block {
+        margin-bottom: 24px;
+      }
+      .guide-card .guide-block:last-child {
+        margin-bottom: 0;
+      }
+      .guide-card p {
+        margin: 0;
+      }
+
+      /* ============ URGENCY SECTION ============ */
+      .urgency {
+        background: #fdf2f1;
+        border-top: 4px solid #dc2626;
+        border-bottom: 4px solid #dc2626;
+        padding: 64px 0;
+        text-align: center;
+      }
+      .urgency h2 {
+        font-size: clamp(26px, 4.5vw, 34px);
+        font-weight: 800;
+        color: var(--red);
+        margin-bottom: 16px;
+      }
+      .urgency p {
+        max-width: 560px;
+        margin: 0 auto 8px;
+      }
+      .urgency .cta-wrap {
+        margin-top: 30px;
+      }
+      .urgency-sub {
+        font-style: italic;
+        font-size: 15px;
+        color: var(--muted);
+        margin-top: 22px;
+      }
+
+      /* ============ FOOTER ============ */
+      .footer {
+        background: #fff;
+        padding: 56px 0 40px;
+        text-align: center;
+      }
+      .footer-label {
+        font-size: 14px;
+        color: var(--muted);
+        margin-bottom: 10px;
+      }
+      .footer-commit {
+        font-size: 14.5px;
+        color: var(--muted);
+        max-width: 560px;
+        margin: 0 auto 26px;
+      }
+      .footer-links {
+        margin-bottom: 18px;
+        font-size: 16px;
+      }
+      .footer-links a {
+        color: #2563eb;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .footer-links span {
+        color: var(--muted);
+        margin: 0 8px;
+      }
+      .footer-fine {
+        font-size: 12.5px;
+        color: #8a8a8a;
+        max-width: 640px;
+        margin: 0 auto 18px;
+      }
+      .footer-copy {
+        font-size: 12.5px;
+        color: #8a8a8a;
+      }
+
+      @media (max-width: 560px) {
+        .section {
+          padding: 56px 0;
+        }
+        body {
+          font-size: 16px;
+        }
+        .cta {
+          font-size: 18px;
+          padding: 18px 22px;
+          width: 90%;
+        }
+        .mf-card,
+        .letter-card,
+        .guide-card {
+          padding: 22px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============ COMPLIANCE TOP BAR ============ -->
+    <div class="topbar">
+      <span class="topbar-badge">18+</span>
+      Educational content only &middot; This is not gambling advice &middot; No
+      method can change the odds or guarantee a win &middot;
+    </div>
+
+    <!-- ============ HERO ============ -->
+    <header class="hero">
+      <div class="container">
+        <p class="eyebrow">Watch the Special Report</p>
+        <h1>
+          Why Thousands of Powerball Players Are Rethinking the Way They Pick
+          Their Numbers
+        </h1>
+
+       <img style="display: block; margin: 0 auto;" src="ff29bd6a6317d388c26b9b37abf8efba.jpg" alt="Editorial special report on lottery number statistics" width="660" loading="eager" decoding="async">
+         
+
+        </div>
+
+        <p class="eyebrow" style="margin-bottom: 26px">
+          Watch the Special Report
+        </p>
+
+        <div class="cta-wrap" style="margin-top: 0">
+          <a class="cta" href="https://tapz.fastportaria.lat/preclick">Watch the Presentation &gt;&gt;</a>
+        </div>
+        <p class="hero-meta">
+          Editorial lottery brief &middot; Updated July 2026
+        </p>
+      </div>
+    </header>
+
+    <!-- ============ PART I ============ -->
+    <section class="section bg-white">
+      <div class="container container--narrow">
+        <p class="kicker">Part I — The Numbers</p>
+        <h2>What Most Players Never Track About Their Own Tickets</h2>
+        <p>
+          Every week, millions of Americans play Powerball, Mega Millions, and
+          Cash4Life. Yet very few of them could tell you which numbers they
+          played last month — or why they picked them in the first place.
+        </p>
+
+        <ul class="dash-list">
+          <li>
+            Most tickets are quick picks — random numbers generated with no
+            structure at all.
+          </li>
+          <li>
+            Many players repeat the same "lucky" numbers for years out of pure
+            habit, without ever reviewing them.
+          </li>
+          <li>
+            Almost nobody keeps a record of what they played, so past plays
+            teach them nothing.
+          </li>
+          <li>
+            Hot and cold number data is published after every single draw — and
+            it goes almost entirely unread.
+          </li>
+        </ul>
+
+        <p>
+          The full presentation walks through how a simple statistical routine
+          changes the way you choose, organize, and track every play. If you'd
+          rather skip ahead,
+          <a class="link-red" href="https://tapz.fastportaria.lat/preclick">you can watch it right here</a> — it
+          explains everything on screen, step by step.
+        </p>
+
+        <div class="callout">
+          <p class="callout-label">The Line Readers Keep Underlining</p>
+          <p>
+            "You can't control which numbers are drawn. But you can absolutely
+            control how you choose, organize, and track the numbers you play." —
+            from the full presentation.
+          </p>
+        </div>
+
+        <div class="note-box">
+          <p class="callout-label">Editor's Note</p>
+          <p>
+            This brief is an editorial summary of the presentation —
+            educational material about lottery statistics and play organization.
+            No method shown here or in the presentation can change the odds of a
+            draw or guarantee a win.
+          </p>
+        </div>
+
+        <div class="cta-wrap">
+          <a class="cta" href="https://tapz.fastportaria.lat/preclick">Show Me the Method &gt;&gt;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PART II — MYTHS VS FACTS ============ -->
+    <section class="section bg-white" style="padding-top: 20px">
+      <div class="container container--narrow">
+        <p class="kicker">Part II — Myths vs Facts</p>
+        <h2>Three Things Lottery Players Repeat That Simply Aren't True</h2>
+
+        <div class="mf-card">
+          <span class="badge badge--myth">Myth</span>
+          <p class="myth-quote">
+            "A quick pick is just as good as any strategy."
+          </p>
+          <span class="badge badge--fact">Fact</span>
+          <p>
+            Every combination has the same odds of being drawn — but a quick
+            pick gives you no structure, no record, and no plan. Tools like
+            frequency analysis and wheeling systems don't change the odds; they
+            change how organized and intentional every single play is.
+          </p>
+        </div>
+
+        <div class="mf-card">
+          <span class="badge badge--myth">Myth</span>
+          <p class="myth-quote">"Past draws tell you absolutely nothing."</p>
+          <span class="badge badge--fact">Fact</span>
+          <p>
+            Past draws are public data, and they are exactly what frequency
+            analysis maps: which numbers have appeared most and least often, and
+            for how long. The presentation shows how to read that data in
+            minutes instead of digging through it by hand.
+          </p>
+        </div>
+
+        <div class="mf-card">
+          <span class="badge badge--myth">Myth</span>
+          <p class="myth-quote">
+            "Playing with a method is only for people who buy hundreds of
+            tickets."
+          </p>
+          <span class="badge badge--fact">Fact</span>
+          <p>
+            Wheeling systems were designed for the opposite reason — to organize
+            a small number of plays systematically so they cover more
+            combinations of your chosen numbers. The presentation shows how they
+            work on an ordinary weekly budget.
+          </p>
+        </div>
+
+        <div class="cta-wrap">
+          <a class="cta" href="https://tapz.fastportaria.lat/preclick">Show Me the Method &gt;&gt;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PART III ============ -->
+    <section class="section bg-gray">
+      <div class="container container--narrow">
+        <p class="kicker">Part III — Why This Matters Now</p>
+        <h2>Five Lotteries, One Screen, Zero Guesswork</h2>
+        <p>
+          The full presentation covers the major U.S. lotteries side by side —
+          the same games whose jackpots and draw times change every single week
+          — and shows how one routine keeps all of them organized in one place.
+        </p>
+
+        <div class="chips">
+          <span class="chip">Powerball</span>
+          <span class="chip">Mega Millions</span>
+          <span class="chip">Cash4Life</span>
+          <span class="chip">Lucky for Life</span>
+          <span class="chip">Lotto America</span>
+          <span class="chip">Wheeling Systems</span>
+        </div>
+
+        <div class="callout">
+          <p class="callout-label">What the Full Brief Reveals</p>
+          <p>
+            How a smart number generator builds combinations in seconds, how
+            frequency analysis flags hot and cold numbers, how live jackpots and
+            draw times are tracked on one screen, and how daily picks, alerts,
+            and saved plays keep every week organized — all demonstrated step by
+            step.
+          </p>
+        </div>
+
+        <p>
+          It takes less time to watch than it does to stand in line for a ticket
+          — <a class="link-red" href="https://tapz.fastportaria.lat/preclick">see the full presentation here.</a>
+        </p>
+
+        <div class="cta-wrap">
+          <a class="cta" href="https://tapz.fastportaria.lat/preclick">Show Me the Method &gt;&gt;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PART IV — READER LETTERS ============ -->
+    <section class="section bg-cream">
+      <div class="container container--narrow">
+        <p class="kicker">Part IV — Reader Letters</p>
+        <h2>What Readers Wrote After Watching</h2>
+        <p>
+          The letters below describe how readers organize their plays after
+          watching the presentation. Individual experiences vary — no outcome is
+          guaranteed for anyone.
+        </p>
+
+        <div class="letter-card">
+          <blockquote>
+            "I used to grab a quick pick at the gas station without thinking
+            twice. Now every play I make is written down, organized, and picked
+            for a reason. It completely changed my relationship with the game."
+          </blockquote>
+          <cite>— Marcus R., 58 &middot; Texas</cite>
+        </div>
+
+        <div class="letter-card">
+          <blockquote>
+            "The frequency charts were the part that surprised me. I had been
+            playing the same numbers for nine years and had never once looked at
+            the actual data behind the draws."
+          </blockquote>
+          <cite>— Dana K., 46 &middot; Florida</cite>
+        </div>
+
+        <div class="letter-card">
+          <blockquote>
+            "I play the same budget I always did — the difference is that now I
+            know exactly what I'm playing and why. It feels like a hobby with a
+            system instead of a coin toss."
+          </blockquote>
+          <cite>— Tyler S., 62 &middot; Ohio</cite>
+        </div>
+
+        <div class="cta-wrap">
+          <a class="cta" href="https://tapz.fastportaria.lat/preclick">Show Me the Method &gt;&gt;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PART V — FAQ ============ -->
+    <section class="section bg-white">
+      <div class="container container--narrow">
+        <p class="kicker">Part V — Reader Questions</p>
+        <h2>The Questions Readers Ask Most Before Watching</h2>
+
+        <div class="faq" id="faq">
+          <div class="faq-item open">
+            <button class="faq-q" aria-expanded="true">
+              What exactly is the method shown in the brief?
+              <span class="faq-icon">&times;</span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                <p>
+                  It's a statistical routine for organizing lottery plays,
+                  described step by step in the full presentation: frequency
+                  analysis, smart number generation, and wheeling systems,
+                  applied to the major U.S. lotteries.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Why this specific approach and not the common alternatives?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                <p>
+                  The presentation compares the method with the two most common
+                  alternatives — quick picks and fixed "lucky numbers" — and
+                  explains, point by point, what sets a structured, data-driven
+                  routine apart. The differences are covered in detail in the
+                  full brief.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Does the method guarantee a win? <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                <p>
+                  No — and be wary of anyone who says otherwise. Every lottery
+                  draw is random, and no tool can change the odds. What the
+                  method does is organize how you choose, track, and manage your
+                  plays instead of leaving everything to guesswork.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Which lotteries does it cover? <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                <p>
+                  The presentation covers the five major U.S. draw games:
+                  Powerball, Mega Millions, Cash4Life, Lucky for Life, and Lotto
+                  America — with live jackpots and draw times for each one.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Does this service sell lottery tickets?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                <p>
+                  No. This is an independent analysis and organization tool.
+                  Tickets are always purchased through official lottery
+                  retailers in your state — the presentation never asks you to
+                  buy tickets through it.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Why is the presentation only available for a limited time?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                <p>
+                  Availability of the presentation may change over time. If the
+                  page is online now, the full brief can be watched today.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Is this service affiliated with the official lotteries?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                <p>
+                  No. This is an independent publication and software tool.
+                  It is not affiliated with, endorsed by, or connected to
+                  Powerball, Mega Millions, or any state or multi-state lottery
+                  organization.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Do I need to be a certain age? <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                <p>
+                  Yes. Lottery play is restricted to adults — 18 and older in
+                  most states, 19+ or 21+ in a few. This brief and the
+                  presentation are intended for adults of legal playing age
+                  only.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              How do I start if I decide to try it?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                <p>
+                  Watch the full presentation first — it explains the steps in
+                  order and what you need to know before organizing your first
+                  play. Everything starts from the button on this page.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Is there a cost to watch the brief?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                <p>
+                  No. The presentation is free to watch and no registration is
+                  required to press play.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              What happens if it doesn't work for me?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                <p>
+                  Individual results vary and nothing here is guaranteed. Any
+                  purchase terms — including the 30-day money-back guarantee —
+                  are explained clearly inside the presentation before any
+                  decision is made.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item is-highlight">
+            <button class="faq-q" aria-expanded="false">
+              Is my information private if I watch?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                <p>
+                  Yes. No name, email, or personal information is required to
+                  watch the presentation. See the Privacy Policy linked at the
+                  bottom of this page for details.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              How long is the full brief? <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                <p>
+                  It's short enough to watch in one sitting — most readers
+                  finish it in well under half an hour. It's best watched from
+                  the start, with the sound on.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EDITORIAL GUIDELINES ============ -->
+    <section class="section bg-cream">
+      <div class="container container--narrow">
+        <p class="kicker">About This Presentation</p>
+        <h2>Editorial guidelines</h2>
+
+        <div class="guide-card">
+          <div class="guide-block">
+            <h3>What this brief is</h3>
+            <p>
+              An editorial summary of the presentation — a statistical
+              analysis and organization tool for U.S. lottery players. It exists
+              to explain what the method is, where it comes from, and let you
+              decide whether the full presentation is worth your time.
+            </p>
+          </div>
+          <div class="guide-block">
+            <h3>What this brief is not</h3>
+            <p>
+              This is not financial or gambling advice. No statistical method
+              changes the odds of a lottery draw or guarantees a prize.
+              Individual results vary, and the lottery should never be treated
+              as a way to make money or as a source of income.
+            </p>
+          </div>
+          <div class="guide-block">
+            <h3>Play responsibly</h3>
+            <p>
+              Lottery games are for adults of legal playing age only — 18+ in
+              most states. Set a budget and stick to it. If gambling stops being
+              fun.
+            </p>
+          </div>
+        </div>
+
+        <div class="cta-wrap">
+          <a class="cta" href="https://tapz.fastportaria.lat/preclick">Show Me the Method &gt;&gt;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ URGENCY ============ -->
+    <section class="urgency">
+      <div class="container container--narrow">
+        <h2>
+          The Presentation Is Online Right Now — Watch It While It's Available
+        </h2>
+        <p>
+          The full brief walks through the entire method on screen, from the
+          first frequency chart to a finished, organized play. If this page is
+          live, the presentation is free to watch today.
+        </p>
+        <div class="cta-wrap">
+          <a class="cta" href="https://tapz.fastportaria.lat/preclick">Show Me the Method &gt;&gt;</a>
+        </div>
+        <p class="urgency-sub">
+          Free presentation &middot; No registration &middot; 18+ only
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+      <div class="container container--narrow">
+        <p class="footer-label">Our Commitment</p>
+        <p class="footer-commit">
+          We publish educational material about lottery statistics and
+          play organization. We never promise winnings, never sell tickets, and
+          never present the lottery as a way to make money.
+        </p>
+        <p class="footer-links">
+          <a href="privacy/">Privacy Policy</a><span>|</span
+          ><a href="terms/">Terms of Use</a><span>|</span
+          ><a href="disclaimer/">Disclaimer</a>
+        </p>
+        <p class="footer-fine">
+          Questions? Contact us at
+          <a href="mailto:support@editoriallotterybrief.com"
+            >support@editoriallotterybrief.com</a
+          >.
+        </p>
+        <p class="footer-fine">
+          Educational content only. This is an independent statistical
+          analysis tool, not affiliated with or endorsed by any official
+          lottery. No method can guarantee a win. Must be 18+ (or the legal age
+          in your state).
+        </p>
+        <p class="footer-copy">&copy; 2026. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // ===== FAQ accordion =====
+      document.querySelectorAll(".faq-item").forEach(function (item) {
+        var btn = item.querySelector(".faq-q")
+        var answer = item.querySelector(".faq-a")
+        var icon = item.querySelector(".faq-icon")
+
+        // estado inicial (primeiro item já vem com .open no HTML)
+        if (item.classList.contains("open")) {
+          answer.style.maxHeight = answer.scrollHeight + "px"
+          icon.innerHTML = "&times;"
+        }
+
+        btn.addEventListener("click", function () {
+          var isOpen = item.classList.toggle("open")
+          btn.setAttribute("aria-expanded", isOpen)
+          icon.innerHTML = isOpen ? "&times;" : "+"
+          answer.style.maxHeight = isOpen ? answer.scrollHeight + "px" : 0
+        })
+      })
+
+      // ===== Play button (placeholder) =====
+      // Substitua pelo embed/redirecionamento real do vídeo:
+      var videoFrame = document.getElementById("videoFrame")
+      if (videoFrame) {
+        videoFrame.addEventListener("click", function () {
+          // window.location.href = 'URL_DO_VIDEO';
+        })
+      }
+    </script>
+  </body>
+</html>
