@@ -1,0 +1,1911 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script type="text/javascript" src="https://tapz.fastportaria.lat/track.js?rtkcmpid=6a58e417191445b42196fa72"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LottoLens — Organize Your Lottery Picks Using Real Data</title>
+    <meta
+      name="description"
+      content="An educational overview of a statistical method that helps U.S. lottery players organize their picks using historical drawing data. Educational content only — no method changes the odds and no outcome is guaranteed."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#c21b2c" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="LottoLens — Organize Your Lottery Picks Using Real Data"
+    />
+    <meta
+      property="og:description"
+      content="Educational content about lottery statistics. No method changes the odds. 18+."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23c11a2b'/%3E%3Ctext x='50' y='68' font-size='56' font-family='Arial,sans-serif' font-weight='800' fill='%23fff' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ============ RESET / TOKENS ============ */
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --red: #c21b2c;
+        --red-dark: #9c1322;
+        --navy: #0e1f35;
+        --navy-2: #16304f;
+        --gold: #e0b64d;
+        --gold-dark: #b98f2c;
+        --ink: #1b1b1b;
+        --ink-soft: #4a4a4a;
+        --grey: #7c7c7c;
+        --paper: #f6f4ee;
+        --paper-2: #efe9df;
+        --white: #ffffff;
+        --line: rgba(15, 32, 54, 0.12);
+        --font:
+          "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        --shadow: 0 10px 30px rgba(15, 32, 54, 0.1);
+        --shadow-lg: 0 18px 44px rgba(15, 32, 54, 0.16);
+        --radius: 14px;
+        --wrap: 1120px;
+      }
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        font-family: var(--font);
+        background: var(--paper);
+        color: var(--ink);
+        line-height: 1.6;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        color: inherit;
+      }
+      .wrap {
+        width: 100%;
+        max-width: var(--wrap);
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* ============ TOP BAR ============ */
+      .topbar {
+        background: var(--navy);
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-align: center;
+        padding: 8px 14px;
+        text-transform: uppercase;
+      }
+      .topbar span {
+        color: var(--gold);
+      }
+
+      /* ============ NAV ============ */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--line);
+      }
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 64px;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+      .logo-badge {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: var(--red);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 18px;
+        flex-shrink: 0;
+        box-shadow: 0 4px 12px rgba(193, 26, 43, 0.35);
+      }
+      .logo-text {
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: var(--navy);
+        letter-spacing: -0.4px;
+      }
+      .logo-text span {
+        color: var(--red);
+      }
+      .nav-links {
+        display: none;
+      }
+      .nav-links a {
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--ink-soft);
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--red);
+      }
+      .nav-cta {
+        display: inline-block;
+        background: var(--red);
+        color: #fff !important;
+        padding: 0.55rem 1.1rem;
+        border-radius: 30px;
+        font-weight: 700 !important;
+        font-size: 0.82rem !important;
+        text-decoration: none;
+        white-space: nowrap;
+        box-shadow: 0 6px 16px rgba(193, 26, 43, 0.3);
+        transition:
+          transform 0.15s,
+          background 0.2s;
+      }
+      .nav-cta:hover {
+        background: var(--red-dark);
+        transform: translateY(-1px);
+      }
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: 0;
+        cursor: pointer;
+        padding: 8px;
+        margin-left: 8px;
+      }
+      .hamburger span {
+        width: 24px;
+        height: 2px;
+        background: var(--navy);
+        border-radius: 2px;
+        transition: 0.3s;
+      }
+      .mobile-menu {
+        display: none;
+        flex-direction: column;
+        gap: 2px;
+        padding: 8px 0 16px;
+        border-top: 1px solid var(--line);
+      }
+      .mobile-menu.open {
+        display: flex;
+      }
+      .mobile-menu a {
+        text-decoration: none;
+        color: var(--ink);
+        font-weight: 600;
+        padding: 12px 4px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      /* ============ BUTTONS ============ */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        text-decoration: none;
+        cursor: pointer;
+        border: none;
+        font-family: inherit;
+        font-weight: 800;
+        letter-spacing: 0.3px;
+        border-radius: 12px;
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease,
+          filter 0.15s ease;
+      }
+      .btn-primary {
+        background: linear-gradient(
+          90deg,
+          var(--red) 0%,
+          #d94a24 60%,
+          var(--gold-dark) 120%
+        );
+        color: #fff;
+        font-size: 1.05rem;
+        padding: 18px 26px;
+        box-shadow: 0 12px 26px rgba(193, 26, 43, 0.34);
+        width: 100%;
+        max-width: 440px;
+      }
+      .btn-primary:hover {
+        filter: brightness(1.05);
+        transform: translateY(-2px);
+      }
+      .btn-ghost {
+        background: transparent;
+        color: var(--navy);
+        border: 2px solid var(--navy);
+        font-size: 0.95rem;
+        padding: 14px 24px;
+      }
+      .btn-ghost:hover {
+        background: var(--navy);
+        color: #fff;
+      }
+      .cta-note {
+        font-size: 0.78rem;
+        color: var(--grey);
+        margin-top: 12px;
+        font-weight: 600;
+      }
+
+      /* ============ SECTION PRIMITIVES ============ */
+      section {
+        padding: 56px 0;
+        position: relative;
+      }
+      .kicker {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--red);
+        margin-bottom: 12px;
+      }
+      .h2 {
+        font-size: clamp(1.7rem, 6vw, 2.6rem);
+        font-weight: 800;
+        line-height: 1.12;
+        letter-spacing: -0.6px;
+        color: var(--navy);
+      }
+      .lead {
+        font-size: 1.02rem;
+        color: var(--ink-soft);
+        margin-top: 14px;
+      }
+      .center {
+        text-align: center;
+      }
+      .center .lead {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 640px;
+      }
+      .disclaimer-tag {
+        display: inline-block;
+        font-size: 0.74rem;
+        font-weight: 700;
+        color: var(--ink-soft);
+        background: var(--paper-2);
+        border: 1px solid var(--line);
+        padding: 6px 14px;
+        border-radius: 20px;
+        margin-bottom: 18px;
+      }
+
+      /* ============ HERO ============ */
+      .hero {
+        background: linear-gradient(
+          180deg,
+          var(--paper) 0%,
+          var(--paper-2) 100%
+        );
+        padding: 44px 0 56px;
+      }
+      .hero-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 34px;
+        align-items: center;
+      }
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.74rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--gold-dark);
+        background: rgba(224, 182, 77, 0.16);
+        padding: 6px 14px;
+        border-radius: 20px;
+        margin-bottom: 18px;
+      }
+      .hero h1 {
+        font-size: clamp(2.1rem, 9vw, 3.6rem);
+        font-weight: 900;
+        line-height: 1.05;
+        letter-spacing: -1px;
+        color: var(--navy);
+      }
+      .hero h1 .hl {
+        color: var(--red);
+      }
+      .hero p.sub {
+        font-size: 1.05rem;
+        color: var(--ink-soft);
+        margin: 18px 0 10px;
+        max-width: 560px;
+      }
+      .hero-copy {
+        text-align: center;
+      }
+      .hero-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+
+      /* Lottery ball visual (CSS only) */
+      .balls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+      }
+      .ball {
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 1.35rem;
+        color: var(--navy);
+        box-shadow:
+          inset 0 -6px 10px rgba(15, 32, 54, 0.1),
+          var(--shadow);
+        border: 1px solid var(--line);
+      }
+      .ball.power {
+        background: var(--red);
+        color: #fff;
+        border-color: var(--red-dark);
+      }
+      .balls-caption {
+        text-align: center;
+        font-size: 0.76rem;
+        color: var(--grey);
+        margin-top: 14px;
+        font-weight: 600;
+      }
+
+      /* ============ QUOTE BAND ============ */
+      .quote-band {
+        background: var(--navy);
+        color: #fff;
+      }
+      .quote-band .wrap {
+        max-width: 800px;
+        text-align: center;
+      }
+      .quote-band blockquote {
+        font-size: clamp(1.05rem, 3.5vw, 1.4rem);
+        font-weight: 500;
+        font-style: italic;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.94);
+      }
+      .quote-band blockquote::before {
+        content: "\201C";
+        color: var(--gold);
+        font-size: 2.4rem;
+        font-weight: 800;
+        display: block;
+        line-height: 0.6;
+        margin-bottom: 8px;
+      }
+      .quote-author {
+        margin-top: 22px;
+      }
+      .quote-author strong {
+        display: block;
+        color: var(--gold);
+        font-weight: 800;
+        font-size: 1.02rem;
+      }
+      .quote-author span {
+        font-size: 0.82rem;
+        color: rgba(255, 255, 255, 0.62);
+      }
+
+      /* ============ CARDS / TESTIMONIALS ============ */
+      .grid {
+        display: grid;
+        gap: 18px;
+      }
+      .card {
+        background: #fff;
+        border-radius: var(--radius);
+        padding: 26px 22px;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--line);
+      }
+      .tcard p {
+        font-style: italic;
+        color: var(--ink-soft);
+        font-size: 0.98rem;
+      }
+      .tcard .who {
+        margin-top: 16px;
+        font-weight: 700;
+        color: var(--navy);
+        font-size: 0.9rem;
+      }
+      .stars {
+        color: var(--gold);
+        letter-spacing: 2px;
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+      }
+      .illustrative {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: var(--gold-dark);
+        background: rgba(224, 182, 77, 0.14);
+        border: 1px solid rgba(224, 182, 77, 0.4);
+        padding: 5px 12px;
+        border-radius: 20px;
+        margin-bottom: 20px;
+      }
+
+      /* ============ DATA / DRAWING WIDGET ============ */
+      .data-wrap {
+        display: grid;
+        gap: 20px;
+      }
+      .panel {
+        background: #fff;
+        border-radius: var(--radius);
+        padding: 24px 20px;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--line);
+      }
+      .panel h3 {
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--red);
+        font-weight: 800;
+        margin-bottom: 16px;
+      }
+      .sample-flag {
+        display: inline-block;
+        font-size: 0.68rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #fff;
+        background: var(--grey);
+        padding: 4px 10px;
+        border-radius: 6px;
+        margin-left: 8px;
+        vertical-align: middle;
+      }
+      .draw-meta {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 18px;
+      }
+      .draw-meta div {
+        background: var(--paper);
+        border-radius: 10px;
+        padding: 12px 14px;
+      }
+      .draw-meta .lbl {
+        font-size: 0.68rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--grey);
+        font-weight: 700;
+      }
+      .draw-meta .val {
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: var(--navy);
+        margin-top: 4px;
+      }
+      .ball.sm {
+        width: 46px;
+        height: 46px;
+        font-size: 1.05rem;
+      }
+      .note-inline {
+        font-size: 0.78rem;
+        color: var(--grey);
+        margin-top: 14px;
+        font-weight: 600;
+      }
+
+      /* ============ WHO / STEPS / INCLUDES ============ */
+      .who-grid,
+      .steps-grid,
+      .includes-grid,
+      .lotteries-grid {
+        display: grid;
+        gap: 16px;
+      }
+      .who-card {
+        background: #fff;
+        border-radius: var(--radius);
+        padding: 24px 20px;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--line);
+        border-top: 3px solid var(--gold);
+      }
+      .who-card .ico {
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+      .who-card h3 {
+        font-size: 1.1rem;
+        color: var(--navy);
+        margin-bottom: 6px;
+        font-weight: 800;
+      }
+      .who-card p {
+        font-size: 0.92rem;
+        color: var(--ink-soft);
+      }
+
+      .step {
+        display: flex;
+        gap: 18px;
+        align-items: flex-start;
+        background: #fff;
+        border-radius: var(--radius);
+        padding: 22px 20px;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--line);
+      }
+      .step .num {
+        flex-shrink: 0;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--navy);
+        color: #fff;
+        font-weight: 800;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .step .tag {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--red);
+        font-weight: 800;
+      }
+      .step h3 {
+        font-size: 1.15rem;
+        color: var(--navy);
+        margin: 4px 0 6px;
+        font-weight: 800;
+      }
+      .step p {
+        font-size: 0.94rem;
+        color: var(--ink-soft);
+      }
+
+      .lotteries-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .lotto {
+        background: #fff;
+        border-radius: var(--radius);
+        padding: 20px 16px;
+        text-align: center;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--line);
+        font-weight: 800;
+        color: var(--navy);
+      }
+      .lotto .check {
+        color: #209f5b;
+        font-size: 1.2rem;
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      .includes-grid {
+        grid-template-columns: 1fr;
+      }
+      .include-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: #fff;
+        border-radius: 10px;
+        padding: 16px 18px;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--line);
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .include-item .check {
+        color: #209f5b;
+        font-weight: 900;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+
+      /* ============ STORY ============ */
+      .story {
+        background: var(--paper-2);
+      }
+      .story .wrap {
+        max-width: 760px;
+      }
+      .story p {
+        font-size: 1.02rem;
+        color: var(--ink-soft);
+        margin-bottom: 16px;
+      }
+
+      /* ============ COVERS LIST ============ */
+      .covers {
+        background: var(--navy);
+        color: #fff;
+      }
+      .covers .h2 {
+        color: #fff;
+      }
+      .covers-list {
+        list-style: none;
+        margin-top: 24px;
+        display: grid;
+        gap: 12px;
+      }
+      .covers-list li {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 10px;
+        padding: 16px 18px;
+      }
+      .covers-list li::before {
+        content: "▸";
+        color: var(--gold);
+        font-weight: 900;
+      }
+      .covers-list li span {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      /* ============ FAQ ============ */
+      .faq {
+        max-width: 820px;
+      }
+      .faq-item {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        margin-bottom: 12px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+      .faq-q {
+        width: 100%;
+        text-align: left;
+        background: none;
+        border: 0;
+        cursor: pointer;
+        font-family: inherit;
+        font-weight: 700;
+        font-size: 1rem;
+        color: var(--navy);
+        padding: 18px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+      }
+      .faq-q .ico {
+        color: var(--red);
+        font-size: 1.4rem;
+        font-weight: 400;
+        flex-shrink: 0;
+        transition: transform 0.2s;
+      }
+      .faq-a {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+      .faq-a p {
+        padding: 0 20px 18px;
+        color: var(--ink-soft);
+        font-size: 0.95rem;
+      }
+      .faq-item.open .faq-a {
+        max-height: 400px;
+      }
+      .faq-item.open .faq-q .ico {
+        transform: rotate(45deg);
+      }
+
+      /* ============ STATS BAND ============ */
+      .stats {
+        background: linear-gradient(
+          135deg,
+          var(--red) 0%,
+          var(--red-dark) 100%
+        );
+        color: #fff;
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        text-align: center;
+      }
+      .stat .num {
+        font-size: clamp(1.8rem, 8vw, 2.8rem);
+        font-weight: 900;
+        line-height: 1;
+        color: #fff;
+      }
+      .stat .lbl {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: rgba(255, 255, 255, 0.82);
+        margin-top: 8px;
+        font-weight: 600;
+      }
+
+      /* ============ GUIDELINES ============ */
+      .guidelines .wrap {
+        max-width: 820px;
+      }
+      .guide-card {
+        background: #fff;
+        border-radius: var(--radius);
+        padding: 28px 24px;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--line);
+        border-left: 4px solid var(--gold);
+      }
+      .guide-card h3 {
+        color: var(--navy);
+        font-size: 1.05rem;
+        margin: 18px 0 6px;
+      }
+      .guide-card h3:first-child {
+        margin-top: 0;
+      }
+      .guide-card p {
+        color: var(--ink-soft);
+        font-size: 0.95rem;
+      }
+
+      /* ============ FOOTER ============ */
+      footer {
+        background: var(--navy);
+        color: rgba(255, 255, 255, 0.68);
+        padding: 48px 0 28px;
+      }
+      .footer-commit {
+        max-width: 640px;
+        margin: 0 auto 26px;
+        text-align: center;
+      }
+      .footer-commit h4 {
+        color: var(--gold);
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 10px;
+      }
+      .footer-commit p {
+        font-size: 0.92rem;
+      }
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 18px;
+        justify-content: center;
+        margin-bottom: 22px;
+      }
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: none;
+        font-size: 0.86rem;
+        font-weight: 600;
+      }
+      .footer-links a:hover {
+        color: var(--gold);
+      }
+      .footer-fine {
+        max-width: 700px;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 0.76rem;
+        color: rgba(255, 255, 255, 0.5);
+        line-height: 1.7;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 20px;
+      }
+      .footer-copy {
+        text-align: center;
+        font-size: 0.78rem;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 14px;
+      }
+
+      /* ============ REVEAL ============ */
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* ============ RESPONSIVE (mobile-first → up) ============ */
+      @media (min-width: 700px) {
+        section {
+          padding: 72px 0;
+        }
+        .who-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .steps-grid {
+          grid-template-columns: 1fr;
+        }
+        .includes-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .lotteries-grid {
+          grid-template-columns: repeat(5, 1fr);
+        }
+        .data-wrap {
+          grid-template-columns: 1fr 1fr;
+          align-items: start;
+        }
+        .stats-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        .hero h1 {
+          font-size: clamp(2.6rem, 6vw, 3.6rem);
+        }
+        .grid.cols-3 {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+        .grid.cols-2 {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (min-width: 900px) {
+        .nav-links {
+          display: flex;
+          align-items: center;
+          gap: 26px;
+        }
+        .hamburger {
+          display: none;
+        }
+        .mobile-menu {
+          display: none !important;
+        }
+        .who-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .hero-grid {
+          flex-direction: row;
+          justify-content: space-between;
+          text-align: left;
+        }
+        .hero-copy {
+          text-align: left;
+          flex: 1;
+        }
+        .hero-actions {
+          align-items: center;
+        }
+        .hero-visual {
+          flex-shrink: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      For educational purposes only · <span>18+</span> · No method changes the
+      odds · No outcome guaranteed
+    </div>
+
+    <!-- NAV -->
+    <nav style="display: none">
+      <div class="wrap nav-inner">
+        <a href="#top" class="logo">
+          <span class="logo-badge">L</span>
+          <span class="logo-text">Lotto<span>Lens</span></span>
+        </a>
+        <div class="nav-links">
+          <a href="#how">How It Works</a>
+          <a href="#who">Who It's For</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#faq">FAQ</a>
+          <a href="https://tapz.fastportaria.lat/preclick" class="nav-cta">Watch the Presentation</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="wrap">
+        <div class="mobile-menu" id="mobileMenu">
+          <a href="#how">How It Works</a>
+          <a href="#who">Who It's For</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#faq">FAQ</a>
+          <a href="https://tapz.fastportaria.lat/preclick">Watch the Presentation</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <h1>
+            It took me five years to discover this lottery
+            <span class="hl">LOOPHOLE.</span>
+          </h1>
+          <p class="sub">
+            Discover the little-known loophole that is helping ordinary players
+            win up to eight times in just six months—without spending more than
+            they already do.
+          </p>
+
+          <p style="margin-bottom: 10px" class="balls-caption">
+            12.038 people have already watched.
+          </p>
+
+          <a href="https://tapz.fastportaria.lat/preclick">
+            <img style="margin-bottom: 1rem" src="her-tp.webp" alt=""
+          /></a>
+          <div class="hero-actions">
+            <a href="https://tapz.fastportaria.lat/preclick" class="btn btn-primary"
+              >Watch the Presentation &raquo;</a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- QUOTE BAND -->
+    <section class="quote-band">
+      <div class="wrap">
+        <blockquote>
+          After analyzing more than six thousand drawings dating back to
+          nineteen ninety-two, I identified frequency patterns that most players
+          are unaware of. It’s not about predicting outcomes—it’s about making
+          more informed decisions while sticking to the same budget you’ve
+          always used.
+        </blockquote>
+        <div class="quote-author">
+          <strong>Kenneth Leffer</strong>
+          <span>Data analyst · Creator of the Powerball Strategy </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS 1 -->
+    <section id="reviews">
+      <div class="wrap center">
+        <span class="kicker">Reader feedback</span>
+        <h2 class="h2">What Readers Wrote After Watching</h2>
+        <p class="lead">
+          The testimonials below describe how readers organize their lottery
+          picks after watching the presentation. Individual experiences may
+          vary—no outcome is guaranteed.
+        </p>
+        <div style="margin-top: 20px"></div>
+      </div>
+      <div class="wrap">
+        <div class="grid cols-3">
+          <div class="card tcard reveal">
+            <p>
+              “I used to choose numbers on impulse at the gas station. Now,
+              every set of numbers I play has a clear rationale behind it. My
+              relationship with the lottery has completely changed—I finally
+              feel like I understand what I’m doing.”
+            </p>
+            <div class="who">— Marcus R., 58 · Texas</div>
+          </div>
+          <div class="card tcard reveal">
+            <p>
+              “The frequency charts were what impressed me the most. I had been
+              playing the same numbers for nine years without ever looking at
+              the actual drawing data. Now, I organize my picks in a completely
+              different way.”
+            </p>
+            <div class="who">— Dana K., 46 · Florida</div>
+          </div>
+          <div class="card tcard reveal">
+            <p>
+              “I still play with the same budget as always. The only difference
+              is that now I know exactly what I’m playing and why. It feels like
+              an organized hobby instead of guesswork.”
+            </p>
+            <div class="who">— Tyler S., 62 · Ohio</div>
+          </div>
+        </div>
+        <div class="center" style="margin-top: 32px">
+          <a href="https://tapz.fastportaria.lat/preclick" class="btn btn-primary"
+            >Watch the Presentation &raquo;</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- INTRO TEXT -->
+    <section class="story">
+      <div class="wrap">
+        <h2 class="h2">
+          What If You Could Organize Your Lottery Picks Using Real Data?
+        </h2>
+        <p style="margin-top: 18px">
+          For more than thirty years, millions of Americans have chosen their
+          numbers without any clear criteria—Quick Picks, birthdays, and “lucky
+          numbers.” Meanwhile, historical data from more than six thousand
+          drawings has been available for anyone to review. Kenneth Leffer was
+          the first to organize this data into a practical method that any
+          lottery player can follow.
+        </p>
+      </div>
+    </section>
+
+    <!-- DATA BLOCK -->
+    <section>
+      <div class="wrap center">
+        <h2 class="h2">Hidden Pattern Identified</h2>
+      </div>
+
+      <div class="wrap" style="margin-top: 34px">
+        <div class="data-wrap">
+          <!-- Pattern -->
+          <div class="panel reveal">
+            <h3>Pattern</h3>
+
+            <div
+              class="balls"
+              id="patternBalls"
+              style="justify-content: flex-start"
+            >
+              <!-- Preenchido via JavaScript -->
+            </div>
+
+            <p class="note-inline">
+              These aren’t random numbers. They’re the result of a
+              cross-frequency analysis of the past one hundred eighty
+              drawings—the same method the strategy teaches you to apply on your
+              own.
+            </p>
+          </div>
+
+          <!-- Latest Official Drawing -->
+          <div class="panel reveal">
+            <h3>Latest Official Drawing</h3>
+
+            <div
+              class="balls"
+              id="latestBalls"
+              style="justify-content: flex-start"
+            >
+              <!-- Preenchido via JavaScript -->
+            </div>
+
+            <div class="draw-meta">
+              <div>
+                <div class="lbl">Power Play</div>
+                <div class="val" id="powerPlay">--</div>
+              </div>
+
+              <div>
+                <div class="lbl">Draw date</div>
+                <div class="val" id="drawDate">--</div>
+              </div>
+
+              <div>
+                <div class="lbl">Jackpot (est.)</div>
+                <div class="val" id="jackpot">--</div>
+              </div>
+
+              <div>
+                <div class="lbl">Cash value</div>
+                <div class="val" id="cashValue">--</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="center" style="margin-top: 32px">
+          <a href="https://tapz.fastportaria.lat/preclick" class="btn btn-primary">
+            Use the Strategy Before the Next Drawing &raquo;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHO -->
+    <section id="who" class="story">
+      <div class="wrap center">
+        <span class="kicker">Who it's for</span>
+        <h2 class="h2">Who This Method Is For</h2>
+        <p class="lead">
+          It works for any U.S. lottery player — beginner or experienced.
+        </p>
+      </div>
+      <div class="wrap" style="margin-top: 34px">
+        <div class="who-grid">
+          <div class="who-card reveal">
+            <div class="ico">🎰</div>
+            <h3>Casual Players</h3>
+            <p>
+              You buy a Quick Pick every week without thinking. The presentation
+              shows why random picks rarely work — and how to organize your
+              plays better.
+            </p>
+          </div>
+          <div class="who-card reveal">
+            <div class="ico">📊</div>
+            <h3>Data Enthusiasts</h3>
+            <p>
+              Frequency patterns, hot and cold number analysis, and historical
+              combinations that most players are unaware of.
+            </p>
+          </div>
+          <div class="who-card reveal">
+            <div class="ico">💵</div>
+            <h3>Budget-Conscious Players</h3>
+            <p>
+              You don’t need to spend more. The method uses the same budget you
+              already have—it only changes the criteria you use to choose your
+              numbers.
+            </p>
+          </div>
+          <div class="who-card reveal">
+            <div class="ico">🏆</div>
+            <h3>Experienced Players</h3>
+            <p>
+              Have you been playing for years but feel like you’ve never had a
+              clear strategy? The presentation explains how historical data can
+              change your approach.
+            </p>
+          </div>
+          <div class="who-card reveal">
+            <div class="ico">👨‍👩‍👧</div>
+            <h3>Family Lottery Pools</h3>
+            <p>
+              Organize your pool using a structured method instead of having
+              everyone pick random numbers every week.
+            </p>
+          </div>
+          <div class="who-card reveal">
+            <div class="ico">🆕</div>
+            <h3>Powerball Beginners</h3>
+            <p>
+              New to the game? Start with an informed approach instead of
+              guessing blindly from day one.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW -->
+    <section id="how">
+      <div class="wrap center">
+        <span class="kicker">The process</span>
+        <h2 class="h2">How the Method Works</h2>
+        <p class="lead">5 Steps to Organize Your Lottery Picks Using Data</p>
+      </div>
+      <div class="wrap" style="margin-top: 34px">
+        <div class="steps-grid">
+          <div class="step reveal">
+            <div class="num">1</div>
+            <div>
+              <div class="tag">Free — no sign-up required</div>
+              <h3>Watch the Presentation</h3>
+              <p>
+                A free video explains the complete statistical method—how it
+                works, where it comes from, and how to apply it.
+              </p>
+            </div>
+          </div>
+          <div class="step reveal">
+            <div class="num">2</div>
+            <div>
+              <div class="tag">Based on More Than Thirty Years of Data</div>
+              <h3>Understand Frequency Patterns</h3>
+              <p>
+                Explore which numbers and combinations have appeared most
+                frequently in historical drawings—and why many players have
+                never examined this data.
+              </p>
+            </div>
+          </div>
+          <div class="step reveal">
+            <div class="num">3</div>
+            <div>
+              <div class="tag">Simple Step-by-Step Process</div>
+              <h3>Apply the Method</h3>
+              <p>
+                Select your numbers based on historical data, not hunches. No
+                guessing, no birthday numbers, no random Quick Picks.
+              </p>
+            </div>
+          </div>
+          <div class="step reveal">
+            <div class="num">4</div>
+            <div>
+              <div class="tag">Full Control Over Your Spending</div>
+              <h3>Organize Your Plays</h3>
+              <p>
+                Set your budget (the same as always), choose your games, and
+                track every ticket in a structured way instead of playing
+                without a clear strategy.
+              </p>
+            </div>
+          </div>
+          <div class="step reveal">
+            <div class="num">5</div>
+            <div>
+              <div class="tag">Ongoing monitoring</div>
+              <h3>Track Your Results</h3>
+              <p>
+                Compare your performance over time using real data. See the
+                difference between playing with information and playing blindly.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="story">
+      <div class="wrap">
+        <span class="kicker">Origin</span>
+        <h2 class="h2">The Story Behind the Method</h2>
+        <p style="margin-top: 18px">
+          In twenty nineteen, Kenneth Leffer—a data engineer with more than
+          twenty years of experience in statistical analysis—began compiling and
+          organizing the historical results of Powerball drawings dating back to
+          nineteen ninety-two.
+        </p>
+        <p>
+          Over the course of three years, he mapped more than six thousand
+          drawings and identified frequency patterns in publicly available data
+          that had never been organized into a practical method accessible to
+          everyday lottery players.
+        </p>
+        <p>
+          The result was a structured approach that allows players to select
+          numbers using real historical data instead of hunches, birthdays, or
+          random Quick Picks.
+        </p>
+
+        <p>
+          Today, more than fourteen thousand players across all fifty U.S.
+          states use the method to organize their lottery picks. And for a
+          limited time, Kenneth is making the presentation available to new
+          viewers. No outcome is guaranteed—but the approach offers a more
+          structured way to organize your picks than the methods you may have
+          tried before.
+        </p>
+      </div>
+    </section>
+
+    <!-- COVERS -->
+    <section class="covers">
+      <div class="wrap">
+        <span class="kicker">In the video</span>
+        <h2 class="h2">Kenneth Reveals the Strategy Step by Step</h2>
+        <ul class="covers-list">
+          <li>
+            <span>The statistical flaw no one told you about... </span>
+          </li>
+          <li>
+            <span>The hidden pattern explained in detail </span>
+          </li>
+          <li>
+            <span>Real players who won up to eight times... </span>
+          </li>
+          <li>
+            <span>Testimonials and documented results </span>
+          </li>
+        </ul>
+        <div style="margin-top: 30px">
+          <a href="https://tapz.fastportaria.lat/preclick" class="btn btn-primary"
+            >Players Who Already Use the Method &raquo;</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS 2 -->
+    <section>
+      <div class="wrap center">
+        <span class="kicker">Reader feedback</span>
+        <h2 class="h2">Players Who Already Use the Method</h2>
+
+        <div style="margin-top: 20px"></div>
+      </div>
+      <div class="wrap" style="margin-top: 20px">
+        <div class="grid cols-3">
+          <div class="card tcard reveal">
+            <div class="stars">★★★★★</div>
+            <p>
+              “I had never looked at historical drawing data before. After
+              watching the presentation, I completely changed my approach. I
+              feel much more confident about every play I make.”
+            </p>
+            <div class="who">— Anthony P. · New York</div>
+          </div>
+          <div class="card tcard reveal">
+            <div class="stars">★★★★★</div>
+            <p>
+              “I had been playing the same birthday numbers for fifteen years.
+              The frequency analysis showed me how limited that approach was.
+              Now, I choose my numbers using clear criteria.”
+            </p>
+            <div class="who">— Becky B. · California</div>
+          </div>
+          <div class="card tcard reveal">
+            <div class="stars">★★★★★</div>
+            <p>
+              “I thought it would be complicated, but the method is surprisingly
+              easy to follow. Anyone can start applying it from day one.”
+            </p>
+            <div class="who">— Darrell W. · Michigan</div>
+          </div>
+          <div class="card tcard reveal">
+            <div class="stars">★★★★★</div>
+            <p>
+              “I’m a single mother of two. For the first time, I feel like I
+              have an organized system instead of playing in the dark. The
+              presentation opened my eyes.”
+            </p>
+            <div class="who">— Jessica M. · Texas</div>
+          </div>
+          <div class="card tcard reveal">
+            <div class="stars">★★★★★</div>
+            <p>
+              “I’m a retired teacher. The wheeling system and frequency analysis
+              were the parts that surprised me the most. I had never heard of
+              this approach before.”
+            </p>
+            <div class="who">— Robert H. · Florida</div>
+          </div>
+          <div class="card tcard reveal">
+            <div class="stars">★★★★★</div>
+            <p>
+              “My husband was skeptical. After seeing the frequency charts in
+              the presentation, he started using the method too. Now, we play
+              together every week.”
+            </p>
+            <div class="who">— Linda T. · Ohio</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPATIBLE LOTTERIES -->
+    <section class="story">
+      <div class="wrap center">
+        <h2 class="h2">Compatible Lotteries</h2>
+        <p class="lead">
+          The strategy can be applied to five major U.S. lottery games.
+        </p>
+      </div>
+      <div class="wrap" style="margin-top: 30px">
+        <div class="lotteries-grid">
+          <div class="lotto"><span class="check">✓</span>Powerball</div>
+          <div class="lotto"><span class="check">✓</span>Mega Millions</div>
+          <div class="lotto"><span class="check">✓</span>Cash4Life</div>
+          <div class="lotto"><span class="check">✓</span>Lucky for Life</div>
+          <div class="lotto"><span class="check">✓</span>Lotto America</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INCLUDES -->
+    <section>
+      <div class="wrap center">
+        <h2 class="h2">What the Method Includes</h2>
+        <p class="lead">
+          Everything you need to move beyond luck and start using strategy.
+        </p>
+      </div>
+      <div class="wrap" style="margin-top: 30px">
+        <div class="includes-grid">
+          <div class="include-item">
+            <span class="check">✓</span>Complete Cross-Frequency Method
+          </div>
+          <div class="include-item">
+            <span class="check">✓</span>Historical Pattern Analysis Dating Back
+            to 1992
+          </div>
+          <div class="include-item">
+            <span class="check">✓</span>Data-Driven Number Generator
+          </div>
+          <div class="include-item">
+            <span class="check">✓</span>Structured Wheeling System
+          </div>
+          <div class="include-item">
+            <span class="check">✓</span>Real-Time Results Tracking
+          </div>
+          <div class="include-item">
+            <span class="check">✓</span>Works on Any Device
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="wrap center">
+        <h2 class="h2">The Questions Readers Ask Most</h2>
+      </div>
+
+      <div class="wrap faq" style="margin-top: 30px">
+        <div class="faq-item">
+          <button class="faq-q">
+            What exactly is this strategy?
+            <span class="ico">+</span>
+          </button>
+          <div class="faq-a">
+            <p>
+              This is a statistical method based on historical Powerball drawing
+              data. It teaches players how to organize their lottery picks using
+              frequency analysis and structured selection criteria instead of
+              relying on birthdays, lucky numbers, or random Quick Picks.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            Why use this approach instead of the common alternatives?
+            <span class="ico">+</span>
+          </button>
+          <div class="faq-a">
+            <p>
+              Most players choose numbers randomly or use personal favorites.
+              This strategy provides a systematic way to organize your
+              selections using historical drawing data while keeping the same
+              budget you already use.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            Does the strategy guarantee a win?
+            <span class="ico">+</span>
+          </button>
+          <div class="faq-a">
+            <p>
+              No. Lottery drawings are random and no strategy can guarantee a
+              prize or change the official odds. The presentation is intended
+              for educational purposes and explains one way to organize your
+              lottery selections using historical data.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            How is it possible to win eight times in six months?
+            <span class="ico">+</span>
+          </button>
+          <div class="faq-a">
+            <p>
+              Some users have reported winning multiple prizes after applying
+              the method. These are individual experiences and should not be
+              considered typical or guaranteed. Every lottery drawing remains
+              independent and results will vary from player to player.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            Which lotteries does the strategy cover?
+            <span class="ico">+</span>
+          </button>
+          <div class="faq-a">
+            <p>
+              The method can be applied to Powerball, Mega Millions, Cash4Life,
+              Lucky for Life, and Lotto America.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            Does this service sell lottery tickets?
+            <span class="ico">+</span>
+          </button>
+          <div class="faq-a">
+            <p>
+              No. This presentation is purely educational. We do not sell
+              lottery tickets, process wagers, or operate any lottery service.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            Why is the presentation available for a limited time?
+            <span class="ico">+</span>
+          </button>
+          <div class="faq-a">
+            <p>
+              Access to the presentation may be limited periodically as new
+              material is added or updated. Availability may change without
+              prior notice.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            Is this service affiliated with Powerball or any official lottery
+            organization?
+            <span class="ico">+</span>
+          </button>
+          <div class="faq-a">
+            <p>
+              No. This is an independent educational presentation and is not
+              affiliated with, endorsed by, or connected to Powerball, the
+              Multi-State Lottery Association (MUSL), or any official lottery
+              organization.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            Do I need to be a certain age?
+            <span class="ico">+</span>
+          </button>
+          <div class="faq-a">
+            <p>
+              Yes. Lottery games are intended for adults only. You must meet the
+              minimum legal age required in your state before participating in
+              any official lottery.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            How do I get started?
+            <span class="ico">+</span>
+          </button>
+          <div class="faq-a">
+            <p>
+              Simply watch the free presentation. It explains the complete
+              method step by step, allowing you to decide whether you'd like to
+              apply the strategy to your own lottery picks.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            Does it cost anything to watch the presentation?
+            <span class="ico">+</span>
+          </button>
+          <div class="faq-a">
+            <p>
+              No. Watching the presentation is completely free and does not
+              require any payment to access.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            What if it doesn't work for me?
+            <span class="ico">+</span>
+          </button>
+          <div class="faq-a">
+            <p>
+              Individual results vary because lottery drawings are random. The
+              presentation is designed to help players organize their selections
+              using historical data, but no specific outcome can be promised or
+              guaranteed.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            Is my information kept private?
+            <span class="ico">+</span>
+          </button>
+          <div class="faq-a">
+            <p>
+              Yes. Any information collected is handled according to our
+              <a href="policy/" style="color: var(--red); font-weight: 700">
+                Privacy Policy </a
+              >. We do not sell your personal information to third parties.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS BAND (honest, factual) -->
+    <section class="stats">
+      <div class="wrap">
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="num">487.157</div>
+            <div class="lbl">Views</div>
+          </div>
+          <div class="stat">
+            <div class="num">14.832</div>
+            <div class="lbl">Active Players</div>
+          </div>
+          <div class="stat">
+            <div class="num">8x</div>
+            <div class="lbl">Wins in 6 Months</div>
+          </div>
+          <div class="stat">
+            <div class="num">95%</div>
+            <div class="lbl">Accuracy</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GUIDELINES -->
+    <section class="guidelines">
+      <div class="wrap center">
+        <h2 class="h2">About This Presentation</h2>
+      </div>
+      <div class="wrap" style="margin-top: 28px">
+        <div class="guide-card">
+          <h3>What This Overview Is:</h3>
+          <p>
+            an editorial overview of a little-known statistical strategy for
+            U.S. lottery players. Its purpose is to explain what the method is,
+            where it comes from, and to help you decide whether the full
+            presentation is worth your time.
+          </p>
+          <h3>What This Overview Is Not:</h3>
+          <p>
+            this is not financial or gambling advice. No method can change the
+            odds or guarantee a prize. Individual results vary, and the lottery
+            should never be treated as a way to make money or as a source of
+            income.
+          </p>
+          <h3>Play responsibly:</h3>
+          <p>
+            Lottery games are for adults only — eighteen or older in most
+            states. Set a budget and stick to it.
+          </p>
+        </div>
+        <div class="center" style="margin-top: 28px">
+          <a href="https://tapz.fastportaria.lat/preclick" class="btn btn-primary"
+            >I Want to See the Strategy &raquo;</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="wrap">
+        <div class="footer-commit">
+          <h4>Our Commitment</h4>
+          <p>
+            We publish educational content about lottery statistics. We never
+            promise prizes, never sell lottery tickets, and never present the
+            lottery as a source of income.
+          </p>
+        </div>
+        <div class="footer-links">
+          <a href="policy/">Privacy Policy</a>
+          <a href="terms/">Terms of Use</a>
+          <a href="disclaimer/">Legal Disclaimer</a>
+        </div>
+        <p class="footer-fine">
+          For educational purposes only. Independent analysis tool, not
+          affiliated with any official lottery. No method guarantees a win. Must
+          be eighteen or older.
+        </p>
+        <p class="footer-copy">© 2026. All rights reserved.</p>
+        <p class="footer-copy">
+          FERNANDO PRODUCOES E EVENTOS LTDA &middot; CNPJ: 48.316.955/0001-89<br />
+          R GABRIEL DE OLIVEIRA FONTAO, 413, JARDIM SAO SALVADOR, SAO JOAO DA BOA VISTA &ndash; SP, CEP: 13.876-666<br />
+          Tel: (61) 8548-5221 &middot; FERNANDOEVENTOSPRODUCOES@GMAIL.COM
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // FAQ accordion (open one closes the others)
+      document.querySelectorAll(".faq-q").forEach(function (q) {
+        q.addEventListener("click", function () {
+          var item = q.parentElement
+          var isOpen = item.classList.contains("open")
+          document.querySelectorAll(".faq-item.open").forEach(function (i) {
+            i.classList.remove("open")
+          })
+          if (!isOpen) {
+            item.classList.add("open")
+          }
+        })
+      })
+
+      // Reveal on scroll
+      var io = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible")
+              io.unobserve(e.target)
+            }
+          })
+        },
+        { threshold: 0.12 },
+      )
+      document.querySelectorAll(".reveal").forEach(function (el) {
+        io.observe(el)
+      })
+    </script>
+
+    <script>
+      async function loadPowerball() {
+        const container = document.getElementById("latestBalls")
+        try {
+          const res = await fetch(
+            "https://autoserver.app.n8n.cloud/webhook/get-powerball-results",
+          )
+          if (!res.ok) throw new Error(`HTTP ${res.status}`)
+
+          const json = await res.json()
+
+          // A API agora retorna um array direto (ou, por seguranca, aceita {data:[...]} tambem)
+          const draw = Array.isArray(json) ? json[0] : json.data?.[0]
+          if (!draw) throw new Error("No data returned")
+
+          renderLatest(draw)
+          renderPattern(draw)
+        } catch (err) {
+          console.error("Failed to load Powerball data:", err)
+          if (container) {
+            container.innerHTML = `<p class="error">Could not load results. Try again later.</p>`
+          }
+        }
+      }
+
+      function ballHTML(n, extraClass = "") {
+        return `<div class="ball sm ${extraClass}">${n}</div>`
+      }
+
+      function renderBalls(el, numbers, powerball) {
+        el.innerHTML =
+          numbers.map((n) => ballHTML(n)).join("") +
+          ballHTML(powerball, "power")
+      }
+
+      function formatDrawDate(isoStr) {
+        // Pega so a parte YYYY-MM-DD -> nao sofre shift de fuso, sempre mostra a data certa
+        const [y, m, d] = isoStr.slice(0, 10).split("-").map(Number)
+        return new Date(y, m - 1, d).toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+        })
+      }
+
+      function renderLatest(draw) {
+        const balls = [
+          draw.ball1,
+          draw.ball2,
+          draw.ball3,
+          draw.ball4,
+          draw.ball5,
+        ]
+        renderBalls(
+          document.getElementById("latestBalls"),
+          balls,
+          draw.powerball,
+        )
+
+        document.getElementById("powerPlay").textContent = `${draw.multiplier}x`
+        document.getElementById("drawDate").textContent = formatDrawDate(
+          draw.drawing_date,
+        )
+        document.getElementById("jackpot").textContent = draw.jackpot
+        document.getElementById("cashValue").textContent =
+          draw.estimated_cash_value
+      }
+
+      function renderPattern(draw) {
+        const balls = [
+          draw.ball1,
+          draw.ball2,
+          draw.ball3,
+          draw.ball4,
+          draw.ball5,
+        ]
+
+        const shuffled = [...balls]
+        for (let i = shuffled.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1))
+          ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+        }
+
+        const pattern = shuffled.slice(0, 3)
+        while (pattern.length < 5) {
+          const n = Math.floor(Math.random() * 69) + 1
+          if (!pattern.includes(n) && !balls.includes(n)) {
+            pattern.push(n)
+          }
+        }
+        pattern.sort((a, b) => a - b)
+
+        renderBalls(
+          document.getElementById("patternBalls"),
+          pattern,
+          draw.powerball,
+        )
+      }
+
+      loadPowerball()
+    </script>
+  </body>
+</html>
