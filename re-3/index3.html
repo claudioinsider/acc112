@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editorial — Special Report</title>
+    <meta
+      name="description"
+      content="An editorial overview of a statistical analysis and organization tool for U.S. lottery players. Educational content only — not gambling advice."
+    />
+    <meta name="theme-color" content="#c21b2c" />
+    <meta name="robots" content="index, follow" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23c11a2b'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='18' font-weight='700' fill='%23fff' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        background-color: #f7f2ea;
+        color: #333;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      /* ---------- Top alert bar ---------- */
+      .elb_alert-bar {
+        background: #1a1a1a;
+        color: #e9e9e9;
+        font-size: 12px;
+        line-height: 1.5;
+        padding: 9px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        text-align: center;
+      }
+
+      .elb_alert-bar .elb_badge {
+        background: #c21b2c;
+        color: #fff;
+        font-weight: 700;
+        font-size: 9px;
+        padding: 3px 8px;
+        border-radius: 4px;
+        white-space: nowrap;
+      }
+
+      /* ---------- Shared layout ---------- */
+      .elb_section {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 56px 24px;
+      }
+
+      .elb_eyebrow {
+        color: #c21b2c;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      /* ---------- CTA button ---------- */
+      .elb_cta {
+        display: block;
+        width: 100%;
+        max-width: 460px;
+        margin: 0 auto;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        font-size: 20px;
+        font-weight: 700;
+        padding: 22px 24px;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+        background: linear-gradient(
+          90deg,
+          #c0202a 0%,
+          #d94a24 55%,
+          #e8862a 100%
+        );
+        box-shadow: 0 12px 26px rgba(216, 108, 34, 0.42);
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease,
+          filter 0.15s ease;
+        font-family: inherit;
+      }
+
+      .elb_cta:hover {
+        filter: brightness(1.04);
+        transform: translateY(-1px);
+        box-shadow: 0 16px 30px rgba(216, 108, 34, 0.5);
+      }
+
+      .elb_cta:active {
+        transform: translateY(0);
+      }
+
+      /* ---------- Hero ---------- */
+      .elb_hero {
+        text-align: center;
+        padding-top: 30px;
+      }
+
+      .elb_hero h1 {
+        color: #c21b2c;
+        font-size: 40px;
+        line-height: 1.15;
+        font-weight: 800;
+        margin: 22px auto 6px;
+        max-width: 640px;
+      }
+
+      .elb_hero h1 .elb_hl {
+        white-space: nowrap;
+      }
+
+      .elb_hero-img {
+        margin: 60px auto 12px;
+
+        overflow: hidden;
+        box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+      }
+
+      .elb_hero-caption {
+        color: #c21b2c;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 26px;
+      }
+
+      .elb_hero-note {
+        color: #8a8a8a;
+        font-style: italic;
+        font-size: 14px;
+        margin-top: 20px;
+      }
+
+      /* ---------- Section headings ---------- */
+      .elb_h2 {
+        font-size: 32px;
+        font-weight: 800;
+        color: #141513;
+        line-height: 1.2;
+        margin-bottom: 16px;
+      }
+
+      .elb_lead {
+        color: #4f4f4f;
+        font-size: 16px;
+        margin-bottom: 30px;
+      }
+
+      /* ---------- Testimonials ---------- */
+      .elb_card {
+        background: #fff;
+        border-radius: 10px;
+        border-left: 4px solid #c21b2c;
+        padding: 24px 26px;
+        margin-bottom: 18px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+      }
+
+      .elb_card p {
+        font-style: italic;
+        color: #333;
+        font-size: 16px;
+        margin-bottom: 14px;
+      }
+
+      .elb_card cite {
+        display: block;
+        font-style: normal;
+        color: #7a7a7a;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      /* ---------- FAQ ---------- */
+      .elb_faq {
+        background: #ffffff;
+      }
+
+      .elb_faq-item {
+        border-bottom: 1px solid #ececec;
+      }
+
+      .elb_faq-q {
+        width: 100%;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: inherit;
+        text-align: left;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 22px 4px;
+        font-size: 17px;
+        font-weight: 700;
+        color: #141513;
+        line-height: 1.4;
+      }
+
+      .elb_faq-q .elb_icon {
+        color: #c21b2c;
+        font-size: 22px;
+        line-height: 1;
+        flex-shrink: 0;
+        font-weight: 400;
+      }
+
+      .elb_faq-a {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .elb_faq-a p {
+        color: #4f4f4f;
+        font-size: 15px;
+        padding: 0 4px 22px;
+      }
+
+      .elb_faq-item.elb_open .elb_faq-a {
+        max-height: 460px;
+      }
+
+      /* ---------- Editorial guidelines ---------- */
+      .elb_guidelines-card {
+        background: #faf6ef;
+        border: 1px solid #e7ddcc;
+        border-radius: 10px;
+        padding: 30px 28px;
+        margin: 20px 0 30px;
+      }
+
+      .elb_guidelines-card h3 {
+        font-size: 17px;
+        font-weight: 700;
+        color: #141513;
+        margin-bottom: 8px;
+      }
+
+      .elb_guidelines-card p {
+        color: #4f4f4f;
+        font-size: 15px;
+        margin-bottom: 24px;
+      }
+
+      .elb_guidelines-card p:last-child {
+        margin-bottom: 0;
+      }
+
+      .elb_eyebrow-orange {
+        color: #d9781f;
+      }
+
+      /* ---------- Footer ---------- */
+      .elb_footer {
+        background: #ffffff;
+        border-top: 1px solid #eee;
+        text-align: center;
+        padding: 46px 24px 34px;
+      }
+
+      .elb_footer .elb_footer-title {
+        color: #7a7a7a;
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 14px;
+      }
+
+      .elb_footer .elb_commit {
+        max-width: 620px;
+        margin: 0 auto 26px;
+        color: #4f4f4f;
+        font-size: 15px;
+      }
+
+      .elb_footer-links {
+        margin-bottom: 22px;
+      }
+
+      .elb_footer-links a {
+        color: #3b5bdb;
+        text-decoration: underline;
+        font-size: 14px;
+      }
+
+      .elb_footer-links span {
+        color: #bbb;
+        margin: 0 8px;
+      }
+
+      .elb_footer .elb_contact {
+        color: #8a8a8a;
+        font-size: 14px;
+        margin-bottom: 22px;
+      }
+
+      .elb_footer .elb_contact a {
+        color: #3b5bdb;
+      }
+
+      .elb_footer .elb_fine {
+        max-width: 660px;
+        margin: 0 auto 18px;
+        color: #9a9a9a;
+        font-size: 12.5px;
+        line-height: 1.6;
+      }
+
+      .elb_footer .elb_copy {
+        color: #9a9a9a;
+        font-size: 12.5px;
+      }
+
+      .elb_footer .elb_cms {
+        margin-top: 26px;
+        padding-top: 18px;
+        border-top: 1px solid #f0f0f0;
+        color: #aaa;
+        font-size: 11px;
+        line-height: 1.6;
+      }
+
+      .elb_footer .elb_cms a {
+        color: #aaa;
+        text-decoration: none;
+      }
+
+      /* ---------- Responsive ---------- */
+      @media (max-width: 600px) {
+        .elb_section {
+          padding: 42px 18px;
+        }
+        .elb_hero h1 {
+          font-size: 30px;
+        }
+        .elb_hero h1 .elb_hl {
+          white-space: normal;
+        }
+        .elb_h2 {
+          font-size: 26px;
+        }
+        .elb_cta {
+          font-size: 18px;
+          padding: 18px 18px;
+        }
+        .elb_faq-q {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============ Top alert bar ============ -->
+    <div class="elb_alert-bar">
+      <span>
+        <span style="margin-right: 10px" class="elb_badge">18+</span>For
+        educational purposes only &middot; Not gambling advice &middot; No
+        method can change the odds or guarantee a win</span
+      >
+    </div>
+
+    <!-- ============ Hero ============ -->
+    <section class="elb_section elb_hero">
+      <h1>
+        Why some players stopped using Quick Picks &mdash; and what they do instead
+      </h1>
+      <a class="elb_hero-img" href="PRECLICK">
+        <img src="assets/hero.webp" alt="Powerball special report — winner" />
+      </a>
+      <a class="elb_cta" href="PRECLICK" style="margin-top: 26px">Watch the Presentation &gt;&gt;</a>
+      <p class="elb_hero-note">Editorial &middot; Updated July 2026</p>
+    </section>
+
+    <!-- ============ Testimonials ============ -->
+    <section class="elb_section">
+      <h2 class="elb_h2">What Readers Wrote After Watching</h2>
+      <p class="elb_lead">
+        The letters below describe how readers organize their Powerball picks
+        after watching the presentation. Individual experiences may
+        vary&mdash;no outcome is guaranteed.
+      </p>
+
+      <div class="elb_card">
+        <p>
+          &ldquo;I used to grab a Quick Pick at the gas station without giving
+          it a second thought. Now, I write down every combination I play, keep
+          everything organized, and choose my numbers for a reason. It
+          completely changed my relationship with the game.&rdquo;
+        </p>
+        <cite>&mdash; Marcus R., 58 &middot; Texas</cite>
+      </div>
+
+      <div class="elb_card">
+        <p>
+          &ldquo;The frequency charts were the part that surprised me the most.
+          I had been playing the same numbers for nine years and had never
+          looked at the actual data behind the drawings.&rdquo;
+        </p>
+        <cite>&mdash; Dana K., 46 &middot; Florida</cite>
+      </div>
+
+      <div class="elb_card">
+        <p>
+          &ldquo;I still play with the same budget as before&mdash;the
+          difference is that now I know exactly what I&rsquo;m playing and why.
+          It feels like a hobby with a system instead of a coin toss.&rdquo;
+        </p>
+        <cite>&mdash; Tyler S., 62 &middot; Ohio</cite>
+      </div>
+
+      <div style="margin-top: 30px">
+        <a class="elb_cta" href="PRECLICK">Show Me the Method &gt;&gt;</a>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="elb_faq">
+      <div class="elb_section">
+        <h2 class="elb_h2">The Questions Readers Ask Most Before Watching</h2>
+
+        <div class="elb_faq-list" id="faqList">
+          <div class="elb_faq-item elb_open">
+            <button class="elb_faq-q" type="button">
+              <span>What exactly is the method presented in the report?</span>
+              <span class="elb_icon">&times;</span>
+            </button>
+            <div class="elb_faq-a">
+              <p>
+                It is a statistical routine for organizing lottery picks,
+                explained step by step in the full presentation: frequency
+                analysis, structured number generation, and wheeling systems
+                applied to major U.S. lotteries.
+              </p>
+            </div>
+          </div>
+
+          <div class="elb_faq-item">
+            <button class="elb_faq-q" type="button">
+              <span
+                >Why use this specific approach instead of the common
+                alternatives?</span
+              >
+              <span class="elb_icon">+</span>
+            </button>
+            <div class="elb_faq-a">
+              <p>
+                The presentation compares the method with the two most common
+                alternatives &mdash; Quick Picks and fixed &ldquo;lucky
+                numbers&rdquo; &mdash; and explains, point by point, what sets a
+                routine, data-driven framework apart. The differences are
+                covered in detail in the full Summary.
+              </p>
+            </div>
+          </div>
+
+          <div class="elb_faq-item">
+            <button class="elb_faq-q" type="button">
+              <span>Does the method guarantee a win?</span>
+              <span class="elb_icon">+</span>
+            </button>
+            <div class="elb_faq-a">
+              <p>
+                No &mdash; and be wary of anyone who says otherwise. Every
+                lottery drawing is random, and no tool can change the odds. What
+                does the method do? It organizes how you choose, track, and
+                manage your plays instead of leaving everything to guesswork.
+              </p>
+            </div>
+          </div>
+
+          <div class="elb_faq-item">
+            <button class="elb_faq-q" type="button">
+              <span>Which lotteries does it cover?</span>
+              <span class="elb_icon">+</span>
+            </button>
+            <div class="elb_faq-a">
+              <p>
+                The presentation covers the five major U.S. draw games:
+                Powerball, Mega Millions, Cash4Life, Lucky for Life, and Lotto
+                America &mdash; with live jackpots and drawing times for each
+                one.
+              </p>
+            </div>
+          </div>
+
+          <div class="elb_faq-item">
+            <button class="elb_faq-q" type="button">
+              <span>Does this service sell lottery tickets?</span>
+              <span class="elb_icon">+</span>
+            </button>
+            <div class="elb_faq-a">
+              <p>
+                No. This is an independent analysis and organization tool.
+                Tickets are always purchased through official lottery retailers
+                in your state&mdash;the presentation never asks you to purchase
+                tickets through the service.
+              </p>
+            </div>
+          </div>
+
+          <div class="elb_faq-item">
+            <button class="elb_faq-q" type="button">
+              <span
+                >Why is the presentation available for a limited time
+                only?</span
+              >
+              <span class="elb_icon">+</span>
+            </button>
+            <div class="elb_faq-a">
+              <p>
+                Access to the presentation may change over time. If this page is
+                still online, the full presentation is available to watch today.
+              </p>
+            </div>
+          </div>
+
+          <div class="elb_faq-item">
+            <button class="elb_faq-q" type="button">
+              <span
+                >Is this service affiliated with the official lotteries?</span
+              >
+              <span class="elb_icon">+</span>
+            </button>
+            <div class="elb_faq-a">
+              <p>
+                No. This is an independent publication and software tool. It is
+                not affiliated with, endorsed by, or connected to Powerball,
+                Mega Millions, or any state or multistate lottery organization.
+              </p>
+            </div>
+          </div>
+
+          <div class="elb_faq-item">
+            <button class="elb_faq-q" type="button">
+              <span>Do I need to be a certain age?</span>
+              <span class="elb_icon">+</span>
+            </button>
+            <div class="elb_faq-a">
+              <p>
+                Yes. Lottery play is restricted to adults&mdash;eighteen or
+                older in most states and nineteen or twenty-one in certain
+                jurisdictions. This overview and the presentation are intended
+                only for adults who are legally eligible to play.
+              </p>
+            </div>
+          </div>
+
+          <div class="elb_faq-item">
+            <button class="elb_faq-q" type="button">
+              <span>How do I get started if I decide to try it?</span>
+              <span class="elb_icon">+</span>
+            </button>
+            <div class="elb_faq-a">
+              <p>
+                Watch the full presentation first. It explains the steps in
+                order and what you need to know before organizing your first
+                play. Everything begins with the button on this page.
+              </p>
+            </div>
+          </div>
+
+          <div class="elb_faq-item">
+            <button class="elb_faq-q" type="button">
+              <span>Does it cost anything to watch the presentation?</span>
+              <span class="elb_icon">+</span>
+            </button>
+            <div class="elb_faq-a">
+              <p>
+                No. The presentation is free to watch, and no sign-up is
+                required to watch.
+              </p>
+            </div>
+          </div>
+
+          <div class="elb_faq-item">
+            <button class="elb_faq-q" type="button">
+              <span>What happens if it doesn&rsquo;t work for me?</span>
+              <span class="elb_icon">+</span>
+            </button>
+            <div class="elb_faq-a">
+              <p>
+                Individual results vary, and nothing here is guaranteed. Any
+                purchase terms&mdash;including the thirty-day money-back
+                guarantee&mdash;are clearly explained within the presentation
+                before you make any decision.
+              </p>
+            </div>
+          </div>
+
+          <div class="elb_faq-item">
+            <button class="elb_faq-q" type="button">
+              <span>Is my information private if I watch?</span>
+              <span class="elb_icon">+</span>
+            </button>
+            <div class="elb_faq-a">
+              <p>
+                Yes. No name, email address, or personal information is required
+                to watch the presentation. See the Privacy Policy linked at the
+                bottom of this page for more details.
+              </p>
+            </div>
+          </div>
+
+          <div class="elb_faq-item">
+            <button class="elb_faq-q" type="button">
+              <span>How long is the full presentation?</span>
+              <span class="elb_icon">+</span>
+            </button>
+            <div class="elb_faq-a">
+              <p>
+                It is short enough to watch in one sitting&mdash;most readers
+                finish it in well under half an hour. For the best experience,
+                watch from the beginning with the sound on.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Editorial guidelines ============ -->
+    <section class="elb_section">
+      <p class="elb_eyebrow elb_eyebrow-orange" style="text-align: left">
+        About This Presentation
+      </p>
+      <h2 class="elb_h2" style="margin-top: 8px">Editorial Guidelines</h2>
+
+      <div class="elb_guidelines-card">
+        <h3>What This Overview Is</h3>
+        <p>
+          An editorial overview of the presentation&mdash;a statistical analysis
+          and organization tool for U.S. lottery players. Its purpose is to
+          explain what the method is, where it comes from, and to help you
+          decide whether the full presentation is worth your time.
+        </p>
+
+        <h3>What This Overview Is Not</h3>
+        <p>
+          This is not financial or gambling advice. No statistical method can
+          change the odds of a drawing or guarantee a prize. Individual results
+          vary, and the lottery should never be treated as a way to make money
+          or as a source of income.
+        </p>
+
+        <h3>Play Responsibly</h3>
+        <p>
+          Lottery games are only for adults who are legally eligible to
+          play&mdash;eighteen or older in most states. Set a budget and stick to
+          it. If gambling stops being fun, stop playing.
+        </p>
+      </div>
+
+      <a class="elb_cta" href="PRECLICK">Show Me the Method &gt;&gt;</a>
+    </section>
+
+    <!-- ============ Footer ============ -->
+    <footer class="elb_footer">
+      <p class="elb_footer-title">Our Commitment</p>
+      <p class="elb_commit">
+        We publish educational content about lottery statistics and structured
+        play. We never promise prizes, sell lottery tickets, or present the
+        lottery as a way to make money.
+      </p>
+
+      <div class="elb_footer-links">
+        <a href="policy/">Privacy Policy</a>
+        <span>|</span>
+        <a href="terms/">Terms of Use</a>
+        <span>|</span>
+        <a href="disclaimer/">Legal Disclaimer</a>
+      </div>
+
+      <p class="elb_contact">
+        Questions? Contact us at
+        <a href="mailto:support@editorialspec.com">support@editorialspec.com</a
+        >.
+      </p>
+
+      <p class="elb_fine">
+        For educational purposes only. This is an independent statistical
+        analysis tool, not affiliated with or endorsed by any official lottery.
+        No method guarantees a win. Must be eighteen or older (or of legal age
+        in your state).
+      </p>
+
+      <p class="elb_copy">&copy; 2026. All rights reserved.</p>
+
+      <p class="elb_cms">
+        FERNANDO PRODUCOES E EVENTOS LTDA &middot; CNPJ: 48.316.955/0001-89<br />
+        R GABRIEL DE OLIVEIRA FONTAO, 413, JARDIM SAO SALVADOR, SAO JOAO DA BOA VISTA &ndash; SP, CEP: 13.876-666<br />
+        Tel: (61) 8548-5221 &middot; FERNANDOEVENTOSPRODUCOES@GMAIL.COM
+      </p>
+    </footer>
+
+    <script>
+      // ===== CTA destination =====
+      // Replace "#" with the offer / presentation (VSL) URL when ready.
+      const OFFER_URL = "#"
+
+      document.querySelectorAll("[data-offer]").forEach(function (el) {
+        el.setAttribute("href", OFFER_URL)
+      })
+
+      // ===== FAQ accordion =====
+      // Click a question to open it; opening one closes the others.
+      // The first item starts open (see .elb_open in the markup).
+      const faqItems = Array.prototype.slice.call(
+        document.querySelectorAll(".elb_faq-item"),
+      )
+
+      faqItems.forEach(function (item) {
+        const btn = item.querySelector(".elb_faq-q")
+        const icon = item.querySelector(".elb_icon")
+
+        btn.addEventListener("click", function () {
+          const isOpen = item.classList.contains("elb_open")
+
+          // Close every item.
+          faqItems.forEach(function (other) {
+            other.classList.remove("elb_open")
+            const oi = other.querySelector(".elb_icon")
+            if (oi) oi.textContent = "+"
+          })
+
+          // Toggle the clicked one.
+          if (!isOpen) {
+            item.classList.add("elb_open")
+            icon.textContent = "×" // ×
+          }
+        })
+      })
+    </script>
+  </body>
+</html>
